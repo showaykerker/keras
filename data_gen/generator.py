@@ -13,8 +13,9 @@ class Generator:
 		if n_data is None: n_data = self.n_data
 		self.X = np.linspace(-1, 1, n_data)
 		np.random.shuffle(self.X)
-		#self.Y = (1.2 * self.X ** 3 - 0.0125 * self.X ** 2 + 0.04 * self.X - 0.05 + np.random.normal(mean, std, (n_data, )))/1.5
-		self.Y = 0.2 * self.X - 0.6 + np.random.normal(mean, std/5, (n_data,))
+		self.Y = (1.2 * self.X ** 3 - 0.0125 * self.X ** 2 + 0.04 * self.X - 0.05 + np.random.normal(mean, std, (n_data, )))/1.5
+		#self.Y = 0.2 * self.X - 0.6 + np.random.normal(mean, std/5, (n_data,))
+		self.Target = (1.2 * self.X ** 3 - 0.0125 * self.X ** 2 + 0.04 * self.X - 0.05 )/1.5
 
 		return self.X, self.Y
 
