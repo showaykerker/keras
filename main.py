@@ -42,16 +42,12 @@ if __name__ == '__main__':
 
 
 	# Show Results
-	print('\ncost =', cost, ',', cost2)
 	W1, b1 = model.layers[0].get_weights()
-	W2, b2 = model2.layers[0].get_weights()
 	print(W1, b1)
-	print(W2, b2)
 	
+
 	# Plot Results
 	Y_pred = model.predict(X_test)
-	Y_pred2 = model2.predict(X_test)
 	plt.scatter(X_test, Y_test, s=0.1)
-	plt.plot(X_test, Y_pred, 'go', ms=0.4)
-	plt.plot(X_test, Y_pred2, 'ro', ms=0.3)
+	plt.plot(X_test, Y_pred, 'go', ms=0.3)
 	plt.show()
