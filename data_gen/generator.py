@@ -6,14 +6,17 @@ np.random.seed(1024)
 
 
 class Generator:
-	def __init__(self, n_data = 500):
-		self.n_data = n_data
+	def __init__(self, n_data=5000):
+		self.n_data=n_data
 
-	def create_data(self, name='NewData'):
-		self.X = np.linspace(-1, 1, self.n_data)
+	def create_data(self, name='NewData',n_data = None, mean = 0, std = 0.15):
+		if n_data is None: n_data = self.n_data
+		self.X = np.linspace(-1, 1, n_data)
 		np.random.shuffle(self.X)
-		self.Y = (1.2 * self.X ** 3 - 0.0125 * self.X ** 2 + 0.04 * self.X - 0.05 + np.random.normal(0, 0.15, (self.n_data, )))/1.5
-		self.save_data(name=name)
+		#self.Y = (1.2 * self.X ** 3 - 0.0125 * self.X ** 2 + 0.04 * self.X - 0.05 + np.random.normal(mean, std, (n_data, )))/1.5
+		self.Y = 0.2 * self.X - 0.6 + np.random.normal(mean, std/5, (n_data,))
+
+		return self.X, self.Y
 
 
 	def save_data(self, name='NewData'):
@@ -37,17 +40,17 @@ class Generator:
 				rX.append(float(x))
 				rY.append(float(y))
 
-			rX = np.array(rX)
-			rY = np.array(rY)
+			rX = np.array(rX, np.float32)
+			rY = np.array(rY, np.float32)
 
 		return rX, rY
 
-	def show_plot(self, X = None, Y = None):
+	def plot_data(self, X = None, Y = None):
 		if X is None and Y is None:
-			plt.scatter(self.X, self.Y, s=0.3)
+			plt.scatter(self.X, self.Y, s=0.1)
 			plt.show()
 		else:
-			plt.scatter(X, Y, s=0.3)
+			plt.scatter(X, Y, s=0.1)
 			plt.show()
 
 
@@ -55,4 +58,4 @@ if __name__ == '__main__':
 	g = Generator()
 	g.create_data()
 	g.read_data()
-	#g.show_plot()
+	g.plot_data()
