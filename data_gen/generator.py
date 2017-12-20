@@ -1,10 +1,3 @@
-'''
-
-Inspired by Morvan Chou 
-https://morvanzhou.github.io/
-
-'''
-
 import numpy as np
 import csv
 import matplotlib.pyplot as plt # sudo -H pip3 install matplotlib
